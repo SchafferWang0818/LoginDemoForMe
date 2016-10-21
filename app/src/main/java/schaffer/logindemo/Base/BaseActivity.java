@@ -54,7 +54,7 @@ public class BaseActivity extends AppCompatActivity implements RetrofitService {
      *
      * @param v
      */
-    public void sendYanZhengMa(View v) {
+    public void sendverifyCode(View v) {
         if (mobile_num != null && code_type != 0) {
             sendSms(mobile_num, code_type).enqueue(new Callback<SendSmsDataBean>() {
                 @Override

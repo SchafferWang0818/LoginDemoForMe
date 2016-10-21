@@ -76,7 +76,7 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="34px"
             android:gravity="center_vertical"
-            android:onClick="sendYanZhengMa"
+            android:onClick="sendverifyCode"
             android:text="发送验证码"
             android:textColor="#17B18C"
             android:textSize="24px" />

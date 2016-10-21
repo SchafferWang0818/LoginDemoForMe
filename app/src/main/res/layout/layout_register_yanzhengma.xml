@@ -23,7 +23,7 @@
 
     <TextView
         android:text="发送验证码"
-        android:onClick="sendYanZhengMa"
+        android:onClick="sendverifyCode"
         android:textColor="#17B18C"
         android:layout_marginRight="34px"
         android:gravity="center_vertical"

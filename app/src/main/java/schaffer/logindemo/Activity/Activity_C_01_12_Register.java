@@ -160,7 +160,7 @@ public class Activity_C_01_12_Register extends BaseActivity {
     }
 
     @Override
-    public void sendYanZhengMa(View v) {
+    public void sendverifyCode(View v) {
         int length = edt_tel.getText().length();
         if (length != 11) {
             ToastUtils.shortNotify("手机号不规范");
@@ -174,7 +174,7 @@ public class Activity_C_01_12_Register extends BaseActivity {
         code_type = 10000;
         if (!MApplication.test) {
             //发送验证码信息
-            super.sendYanZhengMa(v);
+            super.sendverifyCode(v);
         }
         i = 60;
         tv = (TextView) v;

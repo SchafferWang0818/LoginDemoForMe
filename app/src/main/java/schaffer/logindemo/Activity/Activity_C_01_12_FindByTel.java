@@ -129,7 +129,7 @@ public class Activity_C_01_12_FindByTel extends BaseActivity {
      * @param v
      */
     @Override
-    public void sendYanZhengMa(View v) {
+    public void sendverifyCode(View v) {
         int length = phoneNum_Edt.getText().length();
         if (length != 11) {
             ToastUtils.shortNotify("手机号不规范");
@@ -149,7 +149,7 @@ public class Activity_C_01_12_FindByTel extends BaseActivity {
         code_type = 10001;
 
         if (!MApplication.test) {
-            super.sendYanZhengMa(v);
+            super.sendverifyCode(v);
         }
         i = 60;
         tv = (TextView) v;
