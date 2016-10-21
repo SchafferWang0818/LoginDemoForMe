@@ -78,7 +78,8 @@ public class BaseActivity extends AppCompatActivity implements RetrofitService {
                 @Override
                 public void onFailure(Call<SendSmsDataBean> call, Throwable t) {
                     if (t.getCause() == null && t.getMessage() == null) {
-                        ToastUtils.shortNotify("请稍后");
+//                        ToastUtils.shortNotify("请稍后");
+                        LogUtils.w("正在发送短信...");
                     }
                 }
             });
