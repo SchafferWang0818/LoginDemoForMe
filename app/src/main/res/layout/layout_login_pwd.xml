@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/style_layout_account"
+    android:layout_below="@id/login_tel"
+    android:layout_marginTop="36px"
+    tools:showIn="@layout/activity_c_01_12_login">
+
+    <ImageView
+        android:id="@+id/login_iv_mima"
+        style="@style/style_layout_login_iv"
+        android:src="@drawable/mima" />
+
+    <View
+        android:id="@+id/login_view_fenge2"
+        style="@style/style_layout_fengexian" />
+
+    <EditText
+        android:id="@+id/login_mima"
+        style="@style/style_layout_edt"
+        android:hint="请输入密码"
+        android:maxLength="12"
+        android:password="true"
+        android:singleLine="true" />
+
+
+</LinearLayout>

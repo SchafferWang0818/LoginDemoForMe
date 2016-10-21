@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_register_yanzhengma"
+    android:layout_below="@id/layout_register_shoujihao"
+    style="@style/style_layout_account"
+    android:layout_marginTop="24px"
+    tools:showIn="@layout/activity_c_01_12_register">
+
+    <ImageView
+        style="@style/style_layout_login_iv"
+        android:src="@drawable/yanzhengma1234" />
+
+    <View style="@style/style_layout_fengexian" />
+
+    <EditText
+        android:id="@+id/register_yanzhengma"
+        style="@style/style_layout_edt"
+        android:hint="请输入验证码"
+        android:maxLength="6"
+        android:digits="1234567890"
+        android:singleLine="true" />
+
+    <TextView
+        android:text="发送验证码"
+        android:onClick="sendYanZhengMa"
+        android:textColor="#17B18C"
+        android:layout_marginRight="34px"
+        android:gravity="center_vertical"
+        android:textSize="24px"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</LinearLayout>

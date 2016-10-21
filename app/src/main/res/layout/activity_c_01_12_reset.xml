@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/reset_group"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/login_bg"
+    android:orientation="vertical"
+    tools:context="schaffer.logindemo.Activity.Activity_C_01_12_Reset">
+
+    <RelativeLayout
+        android:id="@+id/chongzhi_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#000000">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:onClick="fanhui"
+            android:src="@drawable/fanhui" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="重置密码"
+            android:textColor="#ffffff"
+            android:textSize="20sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/chongzhi_pwd_edt1_group"
+            style="@style/style_layout_account"
+            android:layout_marginTop="90px">
+
+            <ImageView
+                style="@style/style_layout_login_iv"
+                android:src="@drawable/mima" />
+
+            <View style="@style/style_layout_fengexian" />
+
+            <EditText
+                android:id="@+id/chongzhi_pwd_edt1"
+                style="@style/style_layout_edt"
+                android:hint="设置密码"
+                android:inputType="textPassword"
+                android:maxLength="12"
+                android:singleLine="true" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/chongzhi_pwd_edt2_group"
+            style="@style/style_layout_account"
+            android:layout_below="@+id/chongzhi_pwd_edt1_group"
+            android:layout_marginTop="24px">
+
+            <ImageView
+                style="@style/style_layout_login_iv"
+                android:src="@drawable/mima" />
+
+            <View style="@style/style_layout_fengexian" />
+
+            <EditText
+                android:id="@+id/chongzhi_pwd_edt2"
+                style="@style/style_layout_edt"
+                android:hint="重新输入密码"
+                android:inputType="textPassword"
+                android:maxLength="12"
+                android:singleLine="true" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/chongzhi_btn"
+            android:layout_width="630px"
+            android:layout_height="90px"
+            android:layout_below="@id/chongzhi_pwd_edt2_group"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="176px"
+            android:background="@drawable/rectangle_btn"
+            android:onClick="chongZhi"
+            android:text="下一步"
+            android:textColor="#ffffff"
+            android:textSize="30px" />
+    </RelativeLayout>
+
+
+</LinearLayout>

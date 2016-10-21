@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:descendantFocusability="beforeDescendants"
+    android:background="@drawable/login_bg"
+    android:orientation="vertical"
+    tools:context="schaffer.logindemo.Activity.Activity_C_01_12_Login">
+
+    <RelativeLayout
+        android:id="@+id/login_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#000">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:onClick="fanhui"
+            android:src="@drawable/fanhui" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="20dp"
+            android:onClick="register"
+            android:text="手机注册"
+            android:textColor="#ffffff"
+            android:textSize="28px" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/login_logo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="100px"
+                android:src="@drawable/logo" />
+
+            <TextView
+                android:id="@+id/login_brand"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/login_logo"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="30px"
+                android:text="芬享音乐"
+                android:textSize="36px" />
+
+            <include layout="@layout/layout_login_account" />
+
+            <include
+                android:id="@+id/login_pwd"
+                layout="@layout/layout_login_pwd" />
+
+            <Button
+                android:id="@+id/login_btn"
+                android:layout_width="630px"
+                android:layout_height="90px"
+                android:layout_below="@id/login_pwd"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="66px"
+                android:background="@drawable/rectangle_btn"
+                android:onClick="login"
+                android:text="登 录"
+                android:textColor="#ffffff"
+                android:textSize="30px" />
+
+            <TextView
+                android:id="@+id/login_forget"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/login_btn"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="60px"
+                android:onClick="forget"
+                android:text="忘记密码?"
+                android:textColor="#666666"
+                android:textSize="26px" />
+
+            <RelativeLayout
+                android:id="@+id/login_disanfang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/login_forget"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="90px">
+
+                <ImageView
+                    android:id="@+id/login_weixin"
+                    style="@style/style_disanfang_iv"
+                    android:onClick="loginThird"
+                    android:src="@drawable/weixindisanfang" />
+
+                <ImageView
+                    android:id="@+id/login_qq"
+                    style="@style/style_disanfang_iv"
+                    android:layout_toRightOf="@id/login_weixin"
+                    android:onClick="loginThird"
+                    android:src="@drawable/qqdisanfang" />
+
+                <ImageView
+                    android:id="@+id/login_weibo"
+                    style="@style/style_disanfang_iv_parent"
+                    android:layout_toRightOf="@id/login_qq"
+                    android:onClick="loginThird"
+                    android:src="@drawable/weibodisanfang" />
+
+                <TextView
+                    style="@style/style_login_disanfang_tv"
+                    android:layout_alignLeft="@id/login_weixin"
+                    android:layout_alignRight="@id/login_weixin"
+                    android:layout_below="@id/login_weixin"
+                    android:text="微信" />
+
+                <TextView
+                    style="@style/style_login_disanfang_tv"
+                    android:layout_alignLeft="@id/login_qq"
+                    android:layout_alignRight="@id/login_qq"
+                    android:layout_below="@id/login_qq"
+                    android:text="QQ" />
+
+                <TextView
+                    style="@style/style_login_disanfang_tv"
+                    android:layout_alignEnd="@id/login_weibo"
+                    android:layout_alignStart="@id/login_weibo"
+                    android:layout_below="@id/login_weibo"
+                    android:text="新浪微博" />
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/login_disanfang"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="76px"
+                android:layout_marginTop="46px"
+                android:text="第三方登录"
+                android:textColor="#d5d2c6"
+                android:textSize="26px" />
+
+
+            <!--android:layout_above="@+id/login_pwd"
+                android:layout_alignStart="@+id/login_pwd" -->
+        </RelativeLayout>
+    </ScrollView>
+
+</LinearLayout>

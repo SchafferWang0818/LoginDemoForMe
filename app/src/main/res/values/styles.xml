@@ -1,0 +1,77 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="style_layout_account">
+        <item name="android:layout_width">630px</item>
+        <item name="android:layout_height">90px</item>
+        <item name="android:layout_centerHorizontal">true</item>
+
+        <item name="android:background">@drawable/rectangle</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <style name="style_layout_login_iv">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">34px</item>
+        <item name="android:layout_marginRight">22px</item>
+    </style>
+
+    <style name="style_layout_fengexian">
+        <item name="android:layout_width">1px</item>
+        <item name="android:layout_height">30px</item>
+        <item name="android:background">#000000</item>
+    </style>
+
+    <style name="style_layout_edt">
+        <item name="android:background">@null</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textSize">30px</item>
+        <item name="android:layout_marginLeft">22px</item>
+        <item name="android:textColorHint">#999999</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <style name="style_disanfang_iv" parent="style_disanfang_iv_parent">
+        <item name="android:layout_marginRight">114px</item>
+    </style>
+
+    <style name="style_disanfang_iv_parent">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="style_login_disanfang_tv">
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textSize">26px</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:layout_marginTop">16px</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="AnimationActivity" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/anim_activity_enter_in</item>
+        <item name="android:activityOpenExitAnimation">@anim/anim_activity_enter_out</item>
+        <item name="android:activityCloseEnterAnimation">@anim/anim_activity_exit_in</item>
+        <item name="android:activityCloseExitAnimation">@anim/anim_activity_exit_out</item>
+    </style>
+
+    <style name="ActivityTheme">
+        <item name="android:windowAnimationStyle">@style/AnimationActivity</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <style name="dialogAnimation">
+        <item name="android:windowEnterAnimation">@anim/anim_dialog_in</item>
+        <item name="android:windowExitAnimation">@anim/anim_dialog_out</item>
+    </style>
+</resources>

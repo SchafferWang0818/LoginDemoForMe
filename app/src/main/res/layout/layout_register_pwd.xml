@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_below="@+id/layout_register_yanzhengma"
+    style="@style/style_layout_account"
+    android:layout_marginTop="24px"
+    tools:showIn="@layout/activity_c_01_12_register">
+
+    <ImageView
+        style="@style/style_layout_login_iv"
+        android:src="@drawable/mima" />
+
+    <View style="@style/style_layout_fengexian" />
+
+    <EditText
+        android:id="@+id/register_pwd_edt"
+        style="@style/style_layout_edt"
+        android:inputType="textPassword"
+        android:hint="请设置登录密码"
+        android:maxLength="12"
+        android:singleLine="true" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="34px"
+        android:onClick="showPwd"
+        android:src="@drawable/yanjing" />
+</LinearLayout>

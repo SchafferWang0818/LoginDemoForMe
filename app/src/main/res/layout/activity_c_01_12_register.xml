@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/register_group"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/login_bg"
+    android:descendantFocusability="beforeDescendants"
+    android:orientation="vertical"
+    tools:context="schaffer.logindemo.Activity.Activity_C_01_12_Register">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#000000">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:onClick="fanhui"
+            android:src="@drawable/fanhui" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="注册"
+            android:textColor="#ffffff"
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:onClick="registerLogin"
+            android:text="已有账号"
+            android:textColor="#ffffff"
+            android:textSize="28px" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include layout="@layout/layout_register_nicheng" />
+
+        <include layout="@layout/layout_register_shoujihao" />
+
+        <include layout="@layout/layout_register_yanzhengma" />
+
+        <include
+            android:id="@+id/layout_register_pwd1"
+            layout="@layout/layout_register_pwd" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/layout_register_pwd1"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="24px"
+            android:text="6-12位字符,包含数字和字母"
+            android:textColor="#ffffff"
+            android:textSize="20px" />
+
+        <Button
+            android:id="@+id/register_btn"
+            android:layout_width="630px"
+            android:layout_height="90px"
+            android:layout_below="@id/layout_register_pwd1"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="176px"
+            android:background="@drawable/rectangle_btn"
+            android:onClick="registerGo"
+            android:text="注册"
+            android:textColor="#ffffff"
+            android:textSize="30px" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/register_btn"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="130px"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/register_cb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@null"
+                android:checked="true"
+                android:drawableLeft="@drawable/selector_register_cb"
+                android:drawablePadding="16px"
+                android:text="我已阅读并同意"
+                android:textColor="#999999" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="xieyi"
+                android:text="《注册服务协议》"
+                android:textColor="#17af8C" />
+        </LinearLayout>
+
+    </RelativeLayout>
+</LinearLayout>

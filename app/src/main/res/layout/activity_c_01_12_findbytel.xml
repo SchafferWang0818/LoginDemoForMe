@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_c_01_12_forget"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/login_bg"
+    tools:context="schaffer.logindemo.Activity.Activity_C_01_12_FindByTel">
+
+    <RelativeLayout
+        android:id="@+id/findbytel_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#000000">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:onClick="fanhui"
+            android:src="@drawable/fanhui" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="找回密码"
+            android:textColor="#ffffff"
+            android:textSize="20sp" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/find_shouji_group"
+        style="@style/style_layout_account"
+        android:layout_below="@+id/findbytel_toolbar"
+        android:layout_marginTop="90px">
+
+        <ImageView
+            style="@style/style_layout_login_iv"
+            android:src="@drawable/shoujihao" />
+
+        <View style="@style/style_layout_fengexian" />
+
+        <EditText
+            android:id="@+id/find_shouji"
+            style="@style/style_layout_edt"
+            android:hint="请输入手机号"
+            android:digits="1234567890"
+            android:maxLength="11"
+            android:singleLine="true" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/find_yanzhengma_group"
+        style="@style/style_layout_account"
+        android:layout_below="@id/find_shouji_group"
+        android:layout_marginTop="36px">
+
+        <ImageView
+            style="@style/style_layout_login_iv"
+            android:src="@drawable/yanzhengma1234" />
+
+        <View style="@style/style_layout_fengexian" />
+
+        <EditText
+            android:id="@+id/find_yanzhengma_edt"
+            style="@style/style_layout_edt"
+            android:digits="1234567890"
+            android:hint="请输入验证码"
+            android:maxLength="6"
+            android:singleLine="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="34px"
+            android:gravity="center_vertical"
+            android:onClick="sendYanZhengMa"
+            android:text="发送验证码"
+            android:textColor="#17B18C"
+            android:textSize="24px" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/find_next"
+        android:layout_width="630px"
+        android:layout_height="90px"
+        android:layout_below="@id/find_yanzhengma_group"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="174px"
+        android:background="@drawable/rectangle_btn"
+        android:onClick="next"
+        android:text="下一步"
+        android:textColor="#ffffff"
+        android:textSize="30px" />
+
+
+</RelativeLayout>
