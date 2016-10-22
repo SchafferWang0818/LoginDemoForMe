@@ -6,10 +6,11 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewTreeObserver;
+
+import com.zhy.autolayout.AutoLayoutActivity;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -29,7 +30,7 @@ import schaffer.logindemo.Utils.ToastUtils;
  * Created by SchafferW on 2016/10/19.
  */
 
-public class BaseActivity extends AppCompatActivity implements RetrofitService {
+public class BaseActivity extends AutoLayoutActivity implements RetrofitService {
     /**
      * 返回上一个页面
      *

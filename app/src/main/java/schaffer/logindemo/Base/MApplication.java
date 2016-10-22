@@ -2,6 +2,8 @@ package schaffer.logindemo.Base;
 
 import android.app.Application;
 
+import com.zhy.autolayout.config.AutoLayoutConifg;
+
 /**
  * Created by SchafferW on 2016/10/19.
  */
@@ -16,5 +18,6 @@ public class MApplication extends Application {
     public void onCreate() {
         super.onCreate();
         app = this;
+        AutoLayoutConifg.getInstance().useDeviceSize();
     }
 }
