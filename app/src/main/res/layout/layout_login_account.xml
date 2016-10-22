@@ -22,5 +22,5 @@
         android:digits="0123456789"
         android:maxLength="11"
         android:singleLine="true"
-        android:hint="请输入手机号" />
+        android:hint="@string/str_write_account" />
 </LinearLayout>

@@ -17,7 +17,7 @@
     <EditText
         android:id="@+id/register_nicheng"
         style="@style/style_layout_edt"
-        android:hint="昵称"
+        android:hint="@string/str_nickname"
         android:maxLength="20"
         android:singleLine="true" />
 </LinearLayout>

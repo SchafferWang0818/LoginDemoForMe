@@ -25,7 +25,7 @@
         android:layout_gravity="center"
         android:layout_marginRight="34px"
         android:gravity="center"
-        android:text="恭喜登录成功!"
+        android:text="@string/str_login_access"
         android:textColor="#ffffff"
         android:textSize="30px" />
 </LinearLayout>

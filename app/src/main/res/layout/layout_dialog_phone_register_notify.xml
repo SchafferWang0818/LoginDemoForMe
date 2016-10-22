@@ -24,7 +24,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="40px"
         android:gravity="center_horizontal"
-        android:text="@string/unregister_notify"
+        android:text="@string/str_unregister_notify"
         android:textSize="28px" />
 
     <Button
@@ -36,7 +36,7 @@
         android:layout_below="@id/dialog_register_tv"
         android:layout_marginTop="44px"
         android:background="@drawable/rectangle_dialog_btn"
-        android:text="@string/sure"
+        android:text="@string/str_sure"
         android:textColor="#ffffff" />
 
 </LinearLayout>

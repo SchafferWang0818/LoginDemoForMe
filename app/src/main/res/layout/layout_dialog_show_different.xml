@@ -23,7 +23,7 @@
         android:layout_marginBottom="44px"
         android:layout_marginTop="40px"
         android:gravity="center_horizontal"
-        android:text="@string/dif_notify"
+        android:text="@string/str_dif_notify"
         android:textSize="28px" />
 
     <Button
@@ -33,7 +33,7 @@
         android:layout_alignParentBottom="true"
         android:layout_below="@+id/dialog_dif_tv"
         android:background="@drawable/rectangle_dialog_btn"
-        android:text="@string/sure"
+        android:text="@string/str_sure"
         android:textColor="#ffffff" />
 
 </LinearLayout>

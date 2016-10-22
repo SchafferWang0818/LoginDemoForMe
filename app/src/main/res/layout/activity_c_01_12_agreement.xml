@@ -13,19 +13,16 @@
         android:background="#000000">
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="10dp"
             android:onClick="fanhui"
-            android:src="@drawable/fanhui" />
+            android:src="@drawable/fanhui"
+            style="@style/back_iv" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:gravity="center"
-            android:text="服务协议"
+            android:text="@string/str_agreement"
             android:textColor="#ffffff"
             android:textSize="20sp" />
     </RelativeLayout>

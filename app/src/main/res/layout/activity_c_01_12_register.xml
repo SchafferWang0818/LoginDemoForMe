@@ -15,10 +15,7 @@
         android:background="#000000">
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="10dp"
+            style="@style/back_iv"
             android:onClick="fanhui"
             android:src="@drawable/fanhui" />
 
@@ -26,7 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="注册"
+            android:text="@string/str_register_title"
             android:textColor="#ffffff"
             android:textSize="20sp" />
 
@@ -37,7 +34,7 @@
             android:layout_centerVertical="true"
             android:layout_marginRight="10dp"
             android:onClick="registerLogin"
-            android:text="已有账号"
+            android:text="@string/str_has_account"
             android:textColor="#ffffff"
             android:textSize="28px" />
 
@@ -63,7 +60,7 @@
             android:layout_below="@id/layout_register_pwd1"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="24px"
-            android:text="6-12位字符,包含数字和字母"
+            android:text="@string/str_login_tip"
             android:textColor="#ffffff"
             android:textSize="20px" />
 
@@ -97,14 +94,14 @@
                 android:checked="true"
                 android:drawableLeft="@drawable/selector_register_cb"
                 android:drawablePadding="16px"
-                android:text="我已阅读并同意"
+                android:text="@string/str_agree"
                 android:textColor="#999999" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="xieyi"
-                android:text="《注册服务协议》"
+                android:text="@string/str_agreement_name"
                 android:textColor="#17af8C" />
         </LinearLayout>
 

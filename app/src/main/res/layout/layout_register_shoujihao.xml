@@ -16,7 +16,7 @@
         android:id="@+id/register_shouji"
         style="@style/style_layout_edt"
         android:digits="1234567890"
-        android:hint="请输入手机号"
+        android:hint="@string/str_phone_num"
         android:maxLength="11"
         android:singleLine="true" />
 </LinearLayout>
