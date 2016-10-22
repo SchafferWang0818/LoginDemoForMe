@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">LoginDemo</string>
+    <string name="unregister_notify">手机号尚未注册,请返回注册</string>
+    <string name="dif_notify">输入两次密码不一致,请重新输入</string>
+    <string name="sure">确定</string>
 </resources>

@@ -111,10 +111,8 @@ public class Activity_C_01_12_Login extends BaseActivity {
             }
             return;
         }
-
         load = new Dialog_load(this);
         load.show();
-
         long mobile = Long.parseLong(acc);
         TelephonyManager tm = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
         String DEVICE_ID = tm.getDeviceId();

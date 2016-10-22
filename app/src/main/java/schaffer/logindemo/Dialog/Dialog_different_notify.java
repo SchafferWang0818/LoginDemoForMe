@@ -7,6 +7,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
+import android.view.WindowManager;
 
 import schaffer.logindemo.R;
 
@@ -22,14 +23,16 @@ public class Dialog_different_notify extends Dialog {
 
         Window window = getWindow();
         View inflate = View.inflate(context, R.layout.layout_dialog_show_different, null);
-        setContentView(inflate);
+        WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams(WindowManager.LayoutParams.WRAP_CONTENT, WindowManager.LayoutParams.WRAP_CONTENT);
+
+        setContentView(inflate, layoutParams);
         inflate.findViewById(R.id.dialog_dif_btn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dismiss();
             }
         });
-        window.setLayout(526, 308);
+//        window.setLayout(526, 308);
         window.setGravity(Gravity.CENTER);
         window.getAttributes().dimAmount = 0;
         window.setWindowAnimations(R.style.dialogAnimation);

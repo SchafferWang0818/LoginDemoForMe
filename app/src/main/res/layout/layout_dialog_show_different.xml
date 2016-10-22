@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/rectangle_dialog">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="524px"
+    android:layout_height="308px"
+    android:background="@drawable/rectangle_dialog"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
 
     <ImageView
         android:id="@+id/dialog_dif_iv"
@@ -14,23 +16,24 @@
 
     <TextView
         android:id="@+id/dialog_dif_tv"
-        android:layout_width="wrap_content"
+        android:layout_width="524px"
         android:layout_height="wrap_content"
         android:layout_below="@id/dialog_dif_iv"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="44px"
         android:layout_marginTop="40px"
-        android:text="输入两次密码不一致,请重新输入"
+        android:gravity="center_horizontal"
+        android:text="@string/dif_notify"
         android:textSize="28px" />
 
     <Button
         android:id="@+id/dialog_dif_btn"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="524px"
+        android:layout_height="82px"
         android:layout_alignParentBottom="true"
         android:layout_below="@+id/dialog_dif_tv"
         android:background="@drawable/rectangle_dialog_btn"
-        android:text="确定"
+        android:text="@string/sure"
         android:textColor="#ffffff" />
 
-</RelativeLayout>
+</LinearLayout>
