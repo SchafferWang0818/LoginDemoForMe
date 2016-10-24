@@ -1,8 +1,8 @@
-package schaffer.logindemo.Utils;
+package schaffer.logindemo.utils;
 
 import android.util.Log;
 
-import schaffer.logindemo.Base.MApplication;
+import schaffer.logindemo.base.MyApplication;
 
 /**
  * Created by SchafferW on 2016/10/19.
@@ -11,12 +11,12 @@ import schaffer.logindemo.Base.MApplication;
 public class LogUtils {
 
     public static void w(String content) {
-        if (MApplication.isPrint_logCat)
+        if (MyApplication.isPrint_logCat)
             Log.w("TAG", content);
     }
 
     public static void e(String content) {
-        if (MApplication.isPrint_logCat)
+        if (MyApplication.isPrint_logCat)
             Log.e("TAG", content);
     }
 

@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="524px"
     android:layout_height="308px"
-    android:background="@drawable/rectangle_dialog"
+    android:background="@drawable/shape_rectangle_dialog"
     android:gravity="center_horizontal"
     android:orientation="vertical">
 
@@ -32,7 +32,7 @@
         android:layout_height="82px"
         android:layout_alignParentBottom="true"
         android:layout_below="@+id/dialog_dif_tv"
-        android:background="@drawable/rectangle_dialog_btn"
+        android:background="@drawable/shape_rectangle_dialog_btn"
         android:text="@string/str_sure"
         android:textColor="#ffffff" />
 

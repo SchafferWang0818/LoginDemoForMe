@@ -1,52 +1,50 @@
-package schaffer.logindemo.Activity;
+package schaffer.logindemo.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import schaffer.logindemo.Base.BaseActivity;
-import schaffer.logindemo.Base.MApplication;
-import schaffer.logindemo.Bean.ForgetSecretDataBean;
-import schaffer.logindemo.Dialog.Dialog_different_notify;
 import schaffer.logindemo.R;
-import schaffer.logindemo.Utils.LogUtils;
-import schaffer.logindemo.Utils.ToastUtils;
+import schaffer.logindemo.base.BaseActivity;
+import schaffer.logindemo.base.MyApplication;
+import schaffer.logindemo.bean.ForgetSecretDataBean;
+import schaffer.logindemo.dialog.DifferentNotifyDialog;
+import schaffer.logindemo.utils.LogUtils;
+import schaffer.logindemo.utils.ToastUtils;
 
 /**
  * 重新设置密码
  */
-public class Activity_C_01_12_Reset extends BaseActivity {
+public class ResetActivity extends BaseActivity {
 
-    protected EditText edt1;
-    protected EditText edt2;
-    private String mobile;
-    private String mobile_code;
+    protected EditText mEdtPassword1;
+    protected EditText mEdtPassword2;
+    private String mobileNumber;
+    private String verifyCode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        super.setContentView(R.layout.activity_c_01_12_reset);
+        super.setContentView(R.layout.activity_reset);
 
-        LinearLayout linearLayout = (LinearLayout) findViewById(R.id.reset_group);
         initView();
         Intent intent = getIntent();
-        mobile = intent.getStringExtra("mobile");
-        mobile_code = intent.getStringExtra("mobile_code");
+        mobileNumber = intent.getStringExtra("mobileNumber");
+        verifyCode = intent.getStringExtra("verifyCode");
 
     }
 
     public void chongZhi(View v) {
-        String s1 = edt1.getText().toString();
-        String s2 = edt2.getText().toString();
+        String s1 = mEdtPassword1.getText().toString();
+        String s2 = mEdtPassword2.getText().toString();
         int length1 = s1.length();
         int length2 = s2.length();
 
-        if (s1.equals("") || s1 == null || s2.equals("") || s2 == null) {
+        if (s1.equals("") || s2.equals("")) {
             ToastUtils.shortNotify("某一项不能为空");
             return;
         }
@@ -55,35 +53,34 @@ public class Activity_C_01_12_Reset extends BaseActivity {
             return;
         }
         if (!s1.equals(s2)) {
-//            ToastUtils.shortNotify("两次输入不匹配");
-            Dialog_different_notify notify = new Dialog_different_notify(this);
+            DifferentNotifyDialog notify = new DifferentNotifyDialog(this);
             notify.show();
             return;
         }
         //不是本地测试数据的情况下
-        if (!MApplication.test) {
-            reset_Online(s1);
+        if (!MyApplication.test) {
+            resetOnline(s1);
         } else {
             finish();
         }
     }
 
-    private void reset_Online(String s1) {
-        forget(mobile, Integer.parseInt(mobile_code), s1)
+    private void resetOnline(String s1) {
+        forget(mobileNumber, Integer.parseInt(verifyCode), s1)
                 .enqueue(new Callback<ForgetSecretDataBean>() {
                     @Override
                     public void onResponse(Call<ForgetSecretDataBean> call, Response<ForgetSecretDataBean> response) {
                         if (response.isSuccessful()) {
                             ForgetSecretDataBean dataBean = response.body();
-                            LogUtils.w("重新设置的回复:"+dataBean.toString());
+                            LogUtils.w("重新设置的回复:" + dataBean.toString());
                             if (dataBean.getMessage().equals("OK")) {
                                 ToastUtils.shortNotify("密码修改成功!");
                                 finish();
                             } else {
-                                LogUtils.w("修改失败1--->"+dataBean.getMessage());
+                                LogUtils.w("修改失败1--->" + dataBean.getMessage());
                             }
                         } else {
-                            LogUtils.w("修改失败2--->"+response.code());
+                            LogUtils.w("修改失败2--->" + response.code());
                         }
                     }
 
@@ -96,8 +93,8 @@ public class Activity_C_01_12_Reset extends BaseActivity {
 
 
     private void initView() {
-        edt1 = (EditText) findViewById(R.id.chongzhi_pwd_edt1);
-        edt2 = (EditText) findViewById(R.id.chongzhi_pwd_edt2);
+        mEdtPassword1 = (EditText) findViewById(R.id.chongzhi_pwd_edt1);
+        mEdtPassword2 = (EditText) findViewById(R.id.chongzhi_pwd_edt2);
     }
 
     @Override

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/login_bg"
     android:orientation="vertical"
-    tools:context="schaffer.logindemo.Activity.Activity_C_01_12_Reset">
+    tools:context="schaffer.logindemo.activity.ResetActivity">
 
     <RelativeLayout
         android:id="@+id/chongzhi_toolbar"
@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
-            android:onClick="fanhui"
+            android:onClick="back"
             android:src="@drawable/fanhui" />
 
         <TextView
@@ -83,7 +83,7 @@
             android:layout_below="@id/chongzhi_pwd_edt2_group"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="176px"
-            android:background="@drawable/rectangle_btn"
+            android:background="@drawable/shape_rectangle_btn"
             android:onClick="chongZhi"
             android:text="@string/str_next"
             android:textColor="#ffffff"

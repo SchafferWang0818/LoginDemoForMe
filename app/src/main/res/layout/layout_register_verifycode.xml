@@ -5,7 +5,7 @@
     android:layout_below="@id/layout_register_shoujihao"
     style="@style/style_layout_account"
     android:layout_marginTop="24px"
-    tools:showIn="@layout/activity_c_01_12_register">
+    tools:showIn="@layout/activity_register">
 
     <ImageView
         style="@style/style_layout_login_iv"
@@ -23,7 +23,7 @@
 
     <TextView
         android:text="@string/str_send_verify"
-        android:onClick="sendverifyCode"
+        android:onClick="sendVerifyCode"
         android:textColor="#17B18C"
         android:layout_marginRight="34px"
         android:gravity="center_vertical"

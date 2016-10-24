@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/login_bg"
-    tools:context="schaffer.logindemo.Activity.Activity_C_01_12_FindByTel">
+    tools:context="schaffer.logindemo.activity.ForgetActivity">
 
     <RelativeLayout
         android:id="@+id/findbytel_toolbar"
@@ -15,7 +15,7 @@
 
         <ImageView
             style="@style/back_iv"
-            android:onClick="fanhui"
+            android:onClick="back"
             android:src="@drawable/fanhui" />
 
         <TextView
@@ -73,7 +73,7 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="34px"
             android:gravity="center_vertical"
-            android:onClick="sendverifyCode"
+            android:onClick="sendVerifyCode"
             android:text="发送验证码"
             android:textColor="#17B18C"
             android:textSize="24px" />
@@ -86,7 +86,7 @@
         android:layout_below="@id/find_yanzhengma_group"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="174px"
-        android:background="@drawable/rectangle_btn"
+        android:background="@drawable/shape_rectangle_btn"
         android:onClick="next"
         android:text="下一步"
         android:textColor="#ffffff"

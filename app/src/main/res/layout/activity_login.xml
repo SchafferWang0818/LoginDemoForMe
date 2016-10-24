@@ -7,7 +7,7 @@
     android:descendantFocusability="beforeDescendants"
     android:background="@drawable/login_bg"
     android:orientation="vertical"
-    tools:context="schaffer.logindemo.Activity.Activity_C_01_12_Login">
+    tools:context="schaffer.logindemo.activity.LoginActivity">
 
     <RelativeLayout
         android:id="@+id/login_toolbar"
@@ -17,7 +17,7 @@
 
         <ImageView
             style="@style/back_iv"
-            android:onClick="fanhui"
+            android:onClick="back"
             android:src="@drawable/fanhui" />
 
         <TextView
@@ -62,7 +62,7 @@
 
             <include
                 android:id="@+id/login_pwd"
-                layout="@layout/layout_login_pwd" />
+                layout="@layout/layout_login_password" />
 
             <Button
                 android:id="@+id/login_btn"
@@ -71,7 +71,7 @@
                 android:layout_below="@id/login_pwd"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="66px"
-                android:background="@drawable/rectangle_btn"
+                android:background="@drawable/shape_rectangle_btn"
                 android:onClick="login"
                 android:text="登 录"
                 android:textColor="#ffffff"
@@ -136,7 +136,7 @@
                     android:layout_alignEnd="@id/login_weibo"
                     android:layout_alignStart="@id/login_weibo"
                     android:layout_below="@id/login_weibo"
-                    android:text="新浪微博" />
+                    android:text="微博" />
             </RelativeLayout>
 
             <TextView

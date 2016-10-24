@@ -1,4 +1,4 @@
-package schaffer.logindemo.Activity;
+package schaffer.logindemo.activity;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -6,40 +6,38 @@ import android.os.Bundle;
 import android.os.Message;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import schaffer.logindemo.Base.BaseActivity;
-import schaffer.logindemo.Base.MApplication;
-import schaffer.logindemo.Bean.SendSmsDataBean;
-import schaffer.logindemo.Dialog.Dialog_register_notify;
 import schaffer.logindemo.R;
-import schaffer.logindemo.Utils.LogUtils;
-import schaffer.logindemo.Utils.ToastUtils;
+import schaffer.logindemo.base.BaseActivity;
+import schaffer.logindemo.base.MyApplication;
+import schaffer.logindemo.bean.SendSmsDataBean;
+import schaffer.logindemo.dialog.RegisterNotifyDialog;
+import schaffer.logindemo.utils.LogUtils;
+import schaffer.logindemo.utils.ToastUtils;
 
 /**
  * 根据手机号发送验证码请求找回密码界面
  * 得到数据成功,存在onFailed()回调中
  * 验证验证码失败,验证码的code = 500,不在成功范围内
  */
-public class Activity_C_01_12_FindByTel extends BaseActivity {
+public class ForgetActivity extends BaseActivity {
 
-    protected RelativeLayout activityC0112Forget;
-    private EditText phoneNum_Edt;
-    private EditText yanzhengma_Edt;
-    private Dialog_register_notify dialog_register_notify;
-    private int i;
-    private TextView tv;
+
+    private EditText mEdtPhoneNum;
+    private EditText mEdtVerifyCode;
+    private int mSecond;
+    private TextView mTvSend;
     //验证码的长度
     int code_length = 6;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        super.setContentView(R.layout.activity_c_01_12_findbytel);
+        super.setContentView(R.layout.activity_forget);
         initView();
     }
 
@@ -49,11 +47,11 @@ public class Activity_C_01_12_FindByTel extends BaseActivity {
      * 然后验证手机号是否已经注册,否则弹出Dialog
      * 然后验证手机号和验证码是否与服务器的内容一致,然后做出响应
      *
-     * @param v
+     * @param v 下一步按钮
      */
     public void next(View v) {
-        final String phoneStr = phoneNum_Edt.getText().toString();
-        final String codeStr = yanzhengma_Edt.getText().toString();
+        final String phoneStr = mEdtPhoneNum.getText().toString();
+        final String codeStr = mEdtVerifyCode.getText().toString();
         if (phoneStr.equals("") || codeStr.equals("")) {
             ToastUtils.shortNotify("手机号或验证码不能为空");
             return;
@@ -102,7 +100,7 @@ public class Activity_C_01_12_FindByTel extends BaseActivity {
     }
 
     private boolean next_Offline(String phoneStr, String codeStr) {
-        if (MApplication.test) {
+        if (MyApplication.test) {
             if (phoneStr.equals("12345678910") && codeStr.equals("12345")) {
                 toReset(phoneStr, codeStr);
                 return true;
@@ -114,11 +112,9 @@ public class Activity_C_01_12_FindByTel extends BaseActivity {
     }
 
     private void toReset(String phoneStr, String codeStr) {
-        Intent intent = new Intent(Activity_C_01_12_FindByTel.this, Activity_C_01_12_Reset.class);
-        LogUtils.w(phoneStr+"--"+codeStr);
-        intent.putExtra("mobile", phoneStr);
-//        int mobile_code = Integer.parseInt(codeStr);
-        intent.putExtra("mobile_code", codeStr);
+        Intent intent = new Intent(ForgetActivity.this, ResetActivity.class);
+        intent.putExtra("mobileNumber", phoneStr);
+        intent.putExtra("verifyCode", codeStr);
         startActivity(intent);
         finish();
     }
@@ -126,55 +122,54 @@ public class Activity_C_01_12_FindByTel extends BaseActivity {
     /**
      * 需要判断是否已经注册,未注册就显示dialog,注册就发送验证码请求
      *
-     * @param v
+     * @param v 注册按钮
      */
     @Override
-    public void sendverifyCode(View v) {
-        int length = phoneNum_Edt.getText().length();
+    public void sendVerifyCode(View v) {
+        int length = mEdtPhoneNum.getText().length();
         if (length != 11) {
             ToastUtils.shortNotify("手机号不规范");
             return;
         }
         //测试内容
-        String phoneNum = phoneNum_Edt.getText().toString().trim();
-        if (MApplication.test && !phoneNum.equals("12345678910")) {
+        String phoneNum = mEdtPhoneNum.getText().toString().trim();
+        if (MyApplication.test && !phoneNum.equals("12345678910")) {
             //已经注册
             ToastUtils.shortNotify("当前账号未注册");
-            dialog_register_notify = new Dialog_register_notify(this);
-            dialog_register_notify.show();
+            RegisterNotifyDialog registerNotifyDialog = new RegisterNotifyDialog(this);
+            registerNotifyDialog.show();
             return;
         }
         //发送修改验证码
-        mobile_num = phoneNum;
-        code_type = 10001;
+        mMobileNum = phoneNum;
+        mCodeType = 10001;
 
-        if (!MApplication.test) {
-            super.sendverifyCode(v);
+        if (!MyApplication.test) {
+            super.sendVerifyCode(v);
         }
-        i = 60;
-        tv = (TextView) v;
-        tv.setText("等待" + i + "秒重发");
-        tv.setEnabled(false);
-        tv.setTextColor(Color.parseColor("#999999"));
+        mSecond = 60;
+        mTvSend = (TextView) v;
+        mTvSend.setText("等待" + mSecond + "秒重发");
+        mTvSend.setEnabled(false);
+        mTvSend.setTextColor(Color.parseColor("#999999"));
         handler.sendEmptyMessageDelayed(200, 1000);
     }
 
     @Override
     public void handleMsg(Message msg) {
         super.handleMsg(msg);
-        if (i != 0) {
-            i--;
-            tv.setText("等待" + i + "秒重发");
+        if (mSecond != 0) {
+            mSecond--;
+            mTvSend.setText("等待" + mSecond + "秒重发");
             //测试内容
-            if (MApplication.test && i == 55) {
-                yanzhengma_Edt.setText("123456");
+            if (MyApplication.test && mSecond == 55) {
+                mEdtVerifyCode.setText("123456");
             }
             handler.sendEmptyMessageDelayed(200, 1000);
         } else {
-            tv.setEnabled(true);
-            tv.setTextColor(Color.parseColor("#17B18C"));
-            tv.setText("再次发送");
-            return;
+            mTvSend.setEnabled(true);
+            mTvSend.setTextColor(Color.parseColor("#17B18C"));
+            mTvSend.setText("再次发送");
         }
     }
 
@@ -184,9 +179,8 @@ public class Activity_C_01_12_FindByTel extends BaseActivity {
     }
 
     private void initView() {
-        activityC0112Forget = (RelativeLayout) findViewById(R.id.activity_c_01_12_forget);
-        this.yanzhengma_Edt = (EditText) findViewById(R.id.find_yanzhengma_edt);
-        this.phoneNum_Edt = (EditText) findViewById(R.id.find_shouji);
-//        controlKeyboardLayout(activityC0112Forget,findViewById(R.id.find_next));
+        this.mEdtVerifyCode = (EditText) findViewById(R.id.find_yanzhengma_edt);
+        this.mEdtPhoneNum = (EditText) findViewById(R.id.find_shouji);
+
     }
 }

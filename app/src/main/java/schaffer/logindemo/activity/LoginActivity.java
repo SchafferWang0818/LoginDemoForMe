@@ -1,72 +1,46 @@
-package schaffer.logindemo.Activity;
+package schaffer.logindemo.activity;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.telephony.TelephonyManager;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.http.Field;
-import schaffer.logindemo.Base.BaseActivity;
-import schaffer.logindemo.Base.MApplication;
-import schaffer.logindemo.Bean.PhoneLoginDataBean;
-import schaffer.logindemo.Dialog.Dialog_load;
-import schaffer.logindemo.Dialog.Dialog_login_notify;
 import schaffer.logindemo.R;
-import schaffer.logindemo.Utils.LogUtils;
-import schaffer.logindemo.Utils.ToastUtils;
+import schaffer.logindemo.base.BaseActivity;
+import schaffer.logindemo.base.MyApplication;
+import schaffer.logindemo.bean.PhoneLoginDataBean;
+import schaffer.logindemo.dialog.LoadDialog;
+import schaffer.logindemo.dialog.LoginNotifyDialog;
+import schaffer.logindemo.utils.LogUtils;
+import schaffer.logindemo.utils.ToastUtils;
 
 /**
  * 登录界面-->登录成功
  */
-public class Activity_C_01_12_Login extends BaseActivity {
+public class LoginActivity extends BaseActivity {
 
-    private android.widget.RelativeLayout logintoolbar;
-    private android.widget.ImageView loginlogo;
-    private android.widget.TextView loginbrand;
-    private android.widget.Button loginbtn;
-    private android.widget.TextView loginforget;
-    private android.widget.ImageView loginweixin;
-    private android.widget.ImageView loginqq;
-    private android.widget.ImageView loginweibo;
-    private android.widget.RelativeLayout logindisanfang;
-    private android.widget.LinearLayout activitymain;
-    private EditText accountEdt;
-    private EditText pwdEdt;
-    private Dialog_login_notify dialog;
-    private Dialog_load load;
+    private EditText mEdtAccount;
+    private EditText mEdtPassword;
+    private LoginNotifyDialog dialog;
+    private LoadDialog load;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_c_01_12_login);
+        setContentView(R.layout.activity_login);
         initViews();
 //        controlKeyboardLayout(activitymain, loginbtn);
     }
 
     private void initViews() {
-        this.activitymain = (LinearLayout) findViewById(R.id.activity_main);
-        this.logindisanfang = (RelativeLayout) findViewById(R.id.login_disanfang);
-        this.loginweibo = (ImageView) findViewById(R.id.login_weibo);
-        this.loginqq = (ImageView) findViewById(R.id.login_qq);
-        this.loginweixin = (ImageView) findViewById(R.id.login_weixin);
-        this.loginforget = (TextView) findViewById(R.id.login_forget);
-        this.loginbtn = (Button) findViewById(R.id.login_btn);
-        this.loginbrand = (TextView) findViewById(R.id.login_brand);
-        this.loginlogo = (ImageView) findViewById(R.id.login_logo);
-        this.logintoolbar = (RelativeLayout) findViewById(R.id.login_toolbar);
-        accountEdt = (EditText) findViewById(R.id.login_shoujihao);
-        pwdEdt = (EditText) findViewById(R.id.login_mima);
-
+        mEdtAccount = (EditText) findViewById(R.id.login_shoujihao);
+        mEdtPassword = (EditText) findViewById(R.id.login_mima);
     }
 
     /**
@@ -74,13 +48,13 @@ public class Activity_C_01_12_Login extends BaseActivity {
      * 账号已经限制为11位数字
      * 密码限制最长为12位任意内容
      *
-     * @param view
+     * @param view 登录按钮
      */
     public void login(View view) {
         String str;
-        String acc = accountEdt.getText().toString();
-        String pwd = pwdEdt.getText().toString();
-        if (acc.equals("") || pwd.equals("") || acc == null || pwd == null) {
+        String acc = mEdtAccount.getText().toString();
+        String pwd = mEdtPassword.getText().toString();
+        if (acc.equals("") || pwd.equals("")) {
             str = "某项内容不能为空";
             ToastUtils.shortNotify(str);
         } else if (acc.length() != 11) {
@@ -99,11 +73,11 @@ public class Activity_C_01_12_Login extends BaseActivity {
     /**
      * 从网络数据库进行登录验证,需要具体实现
      *
-     * @param acc
-     * @param pwd
+     * @param acc 账号
+     * @param pwd 密码
      */
     private void queryByNetwork(final String acc, final String pwd) {
-        if (MApplication.test) {
+        if (MyApplication.test) {
             if (acc.equals("12345678910") && pwd.equals("12345678910")) {
                 ToastUtils.shortNotify("假数据测试登录成功,请在application下更改test属性");
             } else {
@@ -111,7 +85,7 @@ public class Activity_C_01_12_Login extends BaseActivity {
             }
             return;
         }
-        load = new Dialog_load(this);
+        load = new LoadDialog(this);
         load.show();
         long mobile = Long.parseLong(acc);
         TelephonyManager tm = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
@@ -125,9 +99,9 @@ public class Activity_C_01_12_Login extends BaseActivity {
                             //处理数据
                             PhoneLoginDataBean dataBean = response.body();
                             LogUtils.w("--->" + dataBean.getMessage() + "," + dataBean.getCode() + "," + dataBean.getData());
-                            LogUtils.w("dataBean-->"+dataBean.toString());
+                            LogUtils.w("dataBean-->" + dataBean.toString());
                             if (dataBean.getMessage().equals("OK")) {
-                                dialog = new Dialog_login_notify(Activity_C_01_12_Login.this);
+                                dialog = new LoginNotifyDialog(LoginActivity.this);
                                 dialog.show();
                                 //处理返回的登录数据
 
@@ -162,42 +136,43 @@ public class Activity_C_01_12_Login extends BaseActivity {
     /**
      * 手机注册
      *
-     * @param view
+     * @param view 注册按钮
      */
     public void register(View view) {
-        Intent intent = new Intent(Activity_C_01_12_Login.this, Activity_C_01_12_Register.class);
+        Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
         startActivity(intent);
     }
 
     /**
      * 第三方登录操作
      *
-     * @param view
+     * @param view 第三方登录操作
      */
     public void loginThird(View view) {
         int id = view.getId();
         switch (id) {
             case R.id.login_weixin:
-
+                // TODO: 第三方登录:微信 
                 break;
             case R.id.login_qq:
+                // TODO: 第三方登录:QQ 
 
                 break;
             case R.id.login_weibo:
+                // TODO: 第三方登录:微博 
 
                 break;
 
         }
-        ToastUtils.shortNotify("此处应该添加第三方登录");
     }
 
     /**
      * 忘记密码选项
      *
-     * @param view
+     * @param view 忘记密码TextView
      */
     public void forget(View view) {
-        Intent intent = new Intent(Activity_C_01_12_Login.this, Activity_C_01_12_FindByTel.class);
+        Intent intent = new Intent(LoginActivity.this, ForgetActivity.class);
         startActivity(intent);
     }
 

@@ -1,8 +1,8 @@
-package schaffer.logindemo.Utils;
+package schaffer.logindemo.utils;
 
 import android.widget.Toast;
 
-import schaffer.logindemo.Base.MApplication;
+import schaffer.logindemo.base.MyApplication;
 
 /**
  * Created by SchafferW on 2016/10/19.
@@ -10,11 +10,6 @@ import schaffer.logindemo.Base.MApplication;
 
 public class ToastUtils {
     public static void shortNotify(String content) {
-        Toast.makeText(MApplication.app, content, Toast.LENGTH_SHORT).show();
+        Toast.makeText(MyApplication.app, content, Toast.LENGTH_SHORT).show();
     }
-
-    public static void longNotify(String content) {
-        Toast.makeText(MApplication.app, content, Toast.LENGTH_LONG).show();
-    }
-
 }

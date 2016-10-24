@@ -1,4 +1,4 @@
-package schaffer.logindemo.Dialog;
+package schaffer.logindemo.dialog;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -15,14 +15,14 @@ import schaffer.logindemo.R;
  * Created by SchafferW on 2016/10/19.
  */
 
-public class Dialog_login_notify extends Dialog {
+public class LoginNotifyDialog extends Dialog {
 
 
-    public Dialog_login_notify(Context context) {
+    public LoginNotifyDialog(Context context) {
         super(context);
         Activity activity = (Activity) context;
         Window window = getWindow();
-        View inflate = View.inflate(context, R.layout.layout_dialog_login_notify, null);
+        View inflate = View.inflate(context, R.layout.dialog_login_notify, null);
         WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams(316, 90);
         setContentView(inflate, layoutParams);
 

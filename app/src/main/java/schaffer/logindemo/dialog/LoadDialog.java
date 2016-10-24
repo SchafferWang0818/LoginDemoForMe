@@ -1,4 +1,4 @@
-package schaffer.logindemo.Dialog;
+package schaffer.logindemo.dialog;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -17,15 +17,15 @@ import schaffer.logindemo.R;
  * Created by SchafferW on 2016/10/21.
  */
 
-public class Dialog_load extends Dialog {
+public class LoadDialog extends Dialog {
 
 
     private final ImageView imageView;
     private AnimationDrawable animationDrawable;
 
-    public Dialog_load(Context context) {
+    public LoadDialog(Context context) {
         super(context);
-        View inflate = View.inflate(context, R.layout.layout_dialog_load, null);
+        View inflate = View.inflate(context, R.layout.dialog_load, null);
         imageView = (ImageView) inflate.findViewById(R.id.dialog_load_iv);
         WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         setContentView(inflate, layoutParams);

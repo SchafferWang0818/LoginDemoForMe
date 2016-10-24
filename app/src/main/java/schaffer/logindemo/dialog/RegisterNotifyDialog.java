@@ -1,5 +1,6 @@
-package schaffer.logindemo.Dialog;
+package schaffer.logindemo.dialog;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Color;
@@ -12,31 +13,30 @@ import android.view.WindowManager;
 import schaffer.logindemo.R;
 
 /**
- * Created by SchafferW on 2016/10/20.
+ * Created by SchafferW on 2016/10/19.
  */
 
-public class Dialog_different_notify extends Dialog {
+public class RegisterNotifyDialog extends Dialog {
 
 
-    public Dialog_different_notify(Context context) {
+    public RegisterNotifyDialog(Context context) {
         super(context);
-
+        Activity activity = (Activity) context;
         Window window = getWindow();
-        View inflate = View.inflate(context, R.layout.layout_dialog_show_different, null);
+        View inflate = View.inflate(context, R.layout.dialog_phone_register_notify, null);
         WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams(WindowManager.LayoutParams.WRAP_CONTENT, WindowManager.LayoutParams.WRAP_CONTENT);
-
-        setContentView(inflate, layoutParams);
-        inflate.findViewById(R.id.dialog_dif_btn).setOnClickListener(new View.OnClickListener() {
+        inflate.findViewById(R.id.dialog_register_btn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dismiss();
             }
         });
-//        window.setLayout(526, 308);
+        setContentView(inflate,layoutParams);
+//        window.setLayout(526,308);
         window.setGravity(Gravity.CENTER);
         window.getAttributes().dimAmount = 0;
-        window.setWindowAnimations(R.style.dialogAnimation);
         window.getDecorView().setBackgroundColor(Color.TRANSPARENT);
+        window.setWindowAnimations(R.style.dialogAnimation);
         window.setBackgroundDrawable(new BitmapDrawable());
         window.getDecorView().setPadding(0, 0, 0, 0);
         setCanceledOnTouchOutside(false);

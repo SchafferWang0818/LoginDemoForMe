@@ -1,6 +1,6 @@
-package schaffer.logindemo.Utils;
+package schaffer.logindemo.utils;
 
-import schaffer.logindemo.Base.MApplication;
+import schaffer.logindemo.base.MyApplication;
 
 /**
  * Created by SchafferW on 2016/10/19.
@@ -8,7 +8,7 @@ import schaffer.logindemo.Base.MApplication;
 
 public class DeminUtils {
     public static int dp2px(int dpvalue) {
-        return (int) (MApplication.app.getResources().getDisplayMetrics().density * dpvalue + 0.5f);
+        return (int) (MyApplication.app.getResources().getDisplayMetrics().density * dpvalue + 0.5f);
     }
 
 }

@@ -1,4 +1,4 @@
-package schaffer.logindemo.Base;
+package schaffer.logindemo.base;
 
 import android.app.Application;
 
@@ -8,8 +8,8 @@ import com.zhy.autolayout.config.AutoLayoutConifg;
  * Created by SchafferW on 2016/10/19.
  */
 
-public class MApplication extends Application {
-    public static MApplication app;
+public class MyApplication extends Application {
+    public static MyApplication app;
     //是否处于测试状态?
     public static boolean test = false;
     //是否打印logcat

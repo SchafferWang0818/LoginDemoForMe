@@ -1,4 +1,4 @@
-package schaffer.logindemo.Activity;
+package schaffer.logindemo.activity;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -15,92 +15,82 @@ import android.widget.TextView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import schaffer.logindemo.Base.BaseActivity;
-import schaffer.logindemo.Base.MApplication;
-import schaffer.logindemo.Bean.RegisterDataBean;
-import schaffer.logindemo.Dialog.Dialog_load;
+import schaffer.logindemo.base.BaseActivity;
+import schaffer.logindemo.base.MyApplication;
+import schaffer.logindemo.bean.RegisterDataBean;
+import schaffer.logindemo.dialog.LoadDialog;
 import schaffer.logindemo.R;
-import schaffer.logindemo.Utils.LogUtils;
-import schaffer.logindemo.Utils.ToastUtils;
+import schaffer.logindemo.utils.LogUtils;
+import schaffer.logindemo.utils.ToastUtils;
 
-/**
- * 注册中
- * 1. 得到验证码
- * 2. 对注册信息进行验证
- */
-public class Activity_C_01_12_Register extends BaseActivity {
+public class RegisterActivity extends BaseActivity {
 
-    protected EditText edt_nickName;
-    protected EditText edt_tel;
-    protected EditText edt_pwd;
-    protected Button registerBtn;
-    protected EditText edt_yanZhengMa;
-    private CheckBox checkBox;
+    protected EditText mEdtNickName;
+    protected EditText mEdtPhoneNum;
+    protected EditText mEdtPassword;
+    protected Button mBtnRegister;
+    protected EditText mEdtVerifyCode;
+    private CheckBox mCbAgreement;
     private TextView tv;
     private int i;
     //验证码长度
     int code_length = 6;
-    private Dialog_load load;
+    private LoadDialog load;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        super.setContentView(R.layout.activity_c_01_12_register);
+        super.setContentView(R.layout.activity_register);
         initView();
 //        LinearLayout linearLayout = (LinearLayout) findViewById(R.id.register_group);
-//        controlKeyboardLayout(linearLayout, registerBtn);
+//        controlKeyboardLayout(linearLayout, mBtnRegister);
     }
 
     /**
      * 已有账号
      *
-     * @param v
+     * @param v 已有账号按钮
      */
     public void registerLogin(View v) {
-        fanhui(v);
+        back(v);
     }
 
 
     /**
-     * 注册按钮
+     * 注册逻辑
      *
-     * @param v
+     * @param v 注册按钮
      */
     public void registerGo(View v) {
-        String str;
-        if (!checkBox.isChecked()) {
+        if (!mCbAgreement.isChecked()) {
             ToastUtils.shortNotify("请阅读并同意相关协议");
             return;
         }
-        //其他判断
-        String name = edt_nickName.getText().toString().trim();
-        if (name.equals(" ") || name == null || name.equals("")) {
+        String name = mEdtNickName.getText().toString().trim();
+        if (name.equals(" ") || name.equals("")) {
             ToastUtils.shortNotify("昵称不能为空");
             return;
         }
-        int length = edt_tel.getText().length();
+        int length = mEdtPhoneNum.getText().length();
         if (length != 11) {
             ToastUtils.shortNotify("手机号不规范");
             return;
         }
-        int pwdLength = edt_pwd.getText().toString().length();
+        int pwdLength = mEdtPassword.getText().toString().length();
         if (pwdLength < 6) {
             ToastUtils.shortNotify("密码长度应该大于6");
             return;
         }
 
-        if (edt_yanZhengMa.getText().toString().length() != code_length) {
+        if (mEdtVerifyCode.getText().toString().length() != code_length) {
             ToastUtils.shortNotify("验证码长度不符");
             return;
         }
-        //发送注册信息,并进行响应判断
-        if (!MApplication.test) {
-            //不是测试的内容
-            load = new Dialog_load(this);
+        if (!MyApplication.test) {
+            load = new LoadDialog(this);
             load.show();
-            sendRegisterMessage(name, edt_tel.getText().toString(), edt_pwd.getText().toString(), edt_yanZhengMa.getText().toString());
+            sendRegisterMessage(name, mEdtPhoneNum.getText().toString(), mEdtPassword.getText().toString(), mEdtVerifyCode.getText().toString());
         } else {
-            //测试情况下
             ToastUtils.shortNotify("注册成功,发送注册信息");
             finish();
         }
@@ -125,10 +115,14 @@ public class Activity_C_01_12_Register extends BaseActivity {
                             String message = dataBean.getMessage();
                             //注册信息处理
 //                            LogUtils.w("注册内容:" + message);
+                            if (message.equals("字段校验失败")) {
+                                ToastUtils.shortNotify("手机已经注册");
+                                return;
+                            }
                             ToastUtils.shortNotify(message);
 
                         } else {
-                            LogUtils.w("注册失败2");
+                            LogUtils.w("注册失败");
                         }
                         if (load != null) {
                             load.dismiss();
@@ -152,16 +146,16 @@ public class Activity_C_01_12_Register extends BaseActivity {
     /**
      * 点击协议界面
      *
-     * @param v
+     * @param v 查看协议
      */
-    public void xieyi(View v) {
-        Intent intent = new Intent(Activity_C_01_12_Register.this, Activity_C_01_12_Agreement.class);
+    public void agreement(View v) {
+        Intent intent = new Intent(RegisterActivity.this, AgreementActivity.class);
         startActivity(intent);
     }
 
     @Override
-    public void sendverifyCode(View v) {
-        int length = edt_tel.getText().length();
+    public void sendVerifyCode(View v) {
+        int length = mEdtPhoneNum.getText().length();
         if (length != 11) {
             ToastUtils.shortNotify("手机号不规范");
             return;
@@ -170,11 +164,11 @@ public class Activity_C_01_12_Register extends BaseActivity {
         if (send_Offline()) return;
         //发送手机注册验证码
 
-        mobile_num = edt_tel.getText().toString();
-        code_type = 10000;
-        if (!MApplication.test) {
+        mMobileNum = mEdtPhoneNum.getText().toString();
+        mCodeType = 10000;
+        if (!MyApplication.test) {
             //发送验证码信息
-            super.sendverifyCode(v);
+            super.sendVerifyCode(v);
         }
         i = 60;
         tv = (TextView) v;
@@ -185,8 +179,8 @@ public class Activity_C_01_12_Register extends BaseActivity {
     }
 
     private boolean send_Offline() {
-        if (MApplication.test) {
-            if (edt_tel.getText().toString().trim().equals("12345678910")) {
+        if (MyApplication.test) {
+            if (mEdtPhoneNum.getText().toString().trim().equals("12345678910")) {
                 ToastUtils.shortNotify("已经注册...");
                 return true;
             } else {
@@ -203,47 +197,47 @@ public class Activity_C_01_12_Register extends BaseActivity {
             if (i != 0) {
                 i--;
                 tv.setText("等待" + i + "秒重发");
-                if (MApplication.test && i == 55) {
-                    edt_yanZhengMa.setText("123456");
+                if (MyApplication.test && i == 55) {
+                    String falseData = "123456";
+                    mEdtVerifyCode.setText(falseData);//假数据
                 }
                 handler.sendEmptyMessageDelayed(200, 1000);
             } else {
                 tv.setEnabled(true);
                 tv.setTextColor(Color.parseColor("#17B18C"));
                 tv.setText("再次发送");
-                return;
             }
         }
     }
 
-    boolean isChecked = true;
+    boolean mIsChecked = true;
 
     /**
      * 显示写入的密码
      *
-     * @param view
+     * @param view 显示密码
      */
     public void showPwd(View view) {
-        if (isChecked) {
+        if (mIsChecked) {
             //需要显示内容
-            edt_pwd.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+            mEdtPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
         } else {
             //不显示内容
-            edt_pwd.setTransformationMethod(PasswordTransformationMethod.getInstance());
+            mEdtPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
         }
-        isChecked = !isChecked;
-        int length = edt_pwd.getText().toString().length();
-        edt_pwd.setSelection(length);
+        mIsChecked = !mIsChecked;
+        int length = mEdtPassword.getText().toString().length();
+        mEdtPassword.setSelection(length);
     }
 
 
     private void initView() {
-        edt_nickName = (EditText) findViewById(R.id.register_nicheng);
-        edt_tel = (EditText) findViewById(R.id.register_shouji);
-        edt_yanZhengMa = (EditText) findViewById(R.id.register_yanzhengma);
-        edt_pwd = (EditText) findViewById(R.id.register_pwd_edt);
-        registerBtn = (Button) findViewById(R.id.register_btn);
-        checkBox = (CheckBox) findViewById(R.id.register_cb);
+        mEdtNickName = (EditText) findViewById(R.id.register_nicheng);
+        mEdtPhoneNum = (EditText) findViewById(R.id.register_shouji);
+        mEdtVerifyCode = (EditText) findViewById(R.id.register_yanzhengma);
+        mEdtPassword = (EditText) findViewById(R.id.register_pwd_edt);
+        mBtnRegister = (Button) findViewById(R.id.register_btn);
+        mCbAgreement = (CheckBox) findViewById(R.id.register_cb);
 //        controlKeyboardLayout();
     }
 

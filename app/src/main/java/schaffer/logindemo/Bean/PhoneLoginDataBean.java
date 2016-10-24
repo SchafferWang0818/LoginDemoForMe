@@ -1,37 +1,6 @@
-package schaffer.logindemo.Bean;
+package schaffer.logindemo.bean;
 
-import java.io.Serializable;
-
-/**
- * Created by SchafferW on 2016/10/20.
- */
-
-public class PhoneLoginDataBean implements Serializable{
-    //登录返回值
-//    sex 用户类型：0男 1女
-//    contact_way： 联系方式
-//    emergency_contact：紧急人姓名
-//    relation：与本人关系
-//    emergency_way：紧急人联系方式
-//    login_type：用户类型：1手机号登录 2微信 3QQ 4微博
-//    type：用户身份类型 0普通用户 1为老师
-//    audit_status：用户审核情况描述：1未提交身份证(一般用户) 2审核中 3审核通过 4审核不通过
-//    status:用户状态  0正常  1禁用  禁用不允许登录
-//
-//
-//    返回用户信息和token，以后每次和用户相关的操作都需要在header中带上token，
-//    形式如下：
-//
-//    Authorization:
-//    Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjMsImlzcyI6Imh0dHA6XC9cL3d3dy5kZW1vLmNvbVwvYXBpXC9sb2dpbiIsImlhdCI6MTQ3NDI4NTQwNCwiZXhwIjoxNDc0Mjg5MDA0LCJuYmYiOjE0NzQyODU0MDQsImp0aSI6IjBkM2UwMDY3ZjA0ZTBjZWMxMTJmNmEwMGU4OTAwMjEzIn0.8VrTdInDWAOnnm26PYvZo6qt4J3uUHMJ3uwZX9U6mlk
-//
-//    token的参数为Authorization，参数值为Bearer + 一个空格 + 登录后获取的token
-//    token有效期为4周，
-//    失效后，需要重新登录获取，
-//    获取后，前端保存记录
-
-
-
+public class PhoneLoginDataBean {
 
     /**
      * message : OK

@@ -6,7 +6,7 @@
     <string name="str_agreement">服务协议</string>
     <string name="str_register_title">注册</string>
     <string name="str_has_account">已有账号</string>
-    <string name="str_login_tip">6-12位字符,包含数字和字母</string>
+    <string name="str_login_tip">6–12位字符,包含数字和字母</string>
     <string name="str_agree">我已阅读并同意</string>
     <string name="str_agreement_name">《注册服务协议》</string>
     <string name="str_nickname">昵称</string>
@@ -17,7 +17,7 @@
     <string name="str_set_pwd">设置密码</string>
     <string name="str_write_pwd_again">重新输入密码</string>
     <string name="str_next">下一步</string>
-    <string name="str_loading">请稍后...</string>
+    <string name="str_loading">请稍后…</string>
     <string name="str_login_access">恭喜登录成功!</string>
     <string name="str_write_account">请输入手机号</string>
     <string name="str_write_pwd">请输入密码</string>

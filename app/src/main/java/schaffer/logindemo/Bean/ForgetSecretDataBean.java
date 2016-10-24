@@ -1,10 +1,6 @@
-package schaffer.logindemo.Bean;
+package schaffer.logindemo.bean;
 
 import java.util.List;
-
-/**
- * Created by SchafferW on 2016/10/20.
- */
 
 public class ForgetSecretDataBean {
     //只用查看message

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="schaffer.logindemo.Activity.Activity_C_01_12_Agreement">
+    tools:context="schaffer.logindemo.activity.AgreementActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -13,7 +13,7 @@
         android:background="#000000">
 
         <ImageView
-            android:onClick="fanhui"
+            android:onClick="back"
             android:src="@drawable/fanhui"
             style="@style/back_iv" />
 

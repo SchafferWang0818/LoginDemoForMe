@@ -5,7 +5,7 @@
     style="@style/style_layout_account"
     android:layout_marginTop="70px"
     android:layout_below="@id/login_brand"
-    tools:showIn="@layout/activity_c_01_12_login">
+    tools:showIn="@layout/activity_login">
 
     <ImageView
         android:id="@+id/login_iv_shoujihao"

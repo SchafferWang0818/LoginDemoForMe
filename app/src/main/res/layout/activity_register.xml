@@ -7,7 +7,7 @@
     android:background="@drawable/login_bg"
     android:descendantFocusability="beforeDescendants"
     android:orientation="vertical"
-    tools:context="schaffer.logindemo.Activity.Activity_C_01_12_Register">
+    tools:context="schaffer.logindemo.activity.RegisterActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -16,7 +16,7 @@
 
         <ImageView
             style="@style/back_iv"
-            android:onClick="fanhui"
+            android:onClick="back"
             android:src="@drawable/fanhui" />
 
         <TextView
@@ -44,15 +44,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <include layout="@layout/layout_register_nicheng" />
+        <include layout="@layout/layout_register_nickname" />
 
-        <include layout="@layout/layout_register_shoujihao" />
+        <include layout="@layout/layout_register_phonenumber" />
 
-        <include layout="@layout/layout_register_yanzhengma" />
+        <include layout="@layout/layout_register_verifycode" />
 
         <include
             android:id="@+id/layout_register_pwd1"
-            layout="@layout/layout_register_pwd" />
+            layout="@layout/layout_register_password" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -71,7 +71,7 @@
             android:layout_below="@id/layout_register_pwd1"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="176px"
-            android:background="@drawable/rectangle_btn"
+            android:background="@drawable/shape_rectangle_btn"
             android:onClick="registerGo"
             android:text="注册"
             android:textColor="#ffffff"
@@ -100,7 +100,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="xieyi"
+                android:onClick="agreement"
                 android:text="@string/str_agreement_name"
                 android:textColor="#17af8C" />
         </LinearLayout>

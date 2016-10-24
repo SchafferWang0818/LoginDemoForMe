@@ -1,8 +1,6 @@
-package schaffer.logindemo.Bean;
+package schaffer.logindemo.bean;
 
-/**
- * Created by SchafferW on 2016/10/20.
- */
+
 
 public class RegisterDataBean {
 

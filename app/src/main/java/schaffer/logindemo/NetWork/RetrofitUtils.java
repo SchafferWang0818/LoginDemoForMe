@@ -1,4 +1,4 @@
-package schaffer.logindemo.NetWork;
+package schaffer.logindemo.network;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -8,9 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 
 public class RetrofitUtils {
-    //http://git.ychlink.com/api/login
-    //http://git.ychlink.com/api/forgotPassword
-    //http://git.ychlink.com/api/register
+
     public static final String BASE_URL = "http://git.ychlink.com/";
     private static Retrofit retrofit = new Retrofit.Builder().baseUrl(BASE_URL).addConverterFactory(GsonConverterFactory.create()).build();
 
